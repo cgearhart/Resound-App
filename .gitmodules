@@ -1,0 +1,6 @@
+[submodule "ResoundApp/js/Recorderjs"]
+	path = ResoundApp/js/Recorderjs
+	url = https://github.com/mattdiamond/Recorderjs.git
+[submodule "ResoundApp/Resound"]
+	path = ResoundApp/Resound
+	url = https://github.com/cgearhart/Resound.git

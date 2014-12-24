@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+  <div id="content">
+{% block content %}
+  <div class="center">
+    <div id="button" class="round-btn" onclick="recordAudioClip(this);">
+      <h1>Listen</h1>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+    <script src="../js/Recorderjs/recorder.js"></script>
+    <script src="../js/audio.js"></script>
+    <script>window.onload=setupAudio()</script>
+    {{ super() }}
+{% endblock %}

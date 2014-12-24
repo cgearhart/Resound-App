@@ -1,0 +1,32 @@
+application: resoundapp
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /js
+  static_dir: js
+
+- url: .*
+  script: main.app
+
+builtins:
+- appstats: on
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: numpy
+  version: "1.6.1"
+
+- name: jinja2
+  version: "2.6"
