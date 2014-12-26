@@ -34,6 +34,8 @@ from models import Hashes, Songs
 
 API_ENTITY_KEY = "agxzfnJlc291bmRhcHByFQsSCEFQSV9rZXlzGICAgICAgIAKDA"
 
+MIN_MATCH_THRESHOLD = 20
+
 # JINJA configuration
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 JINJA_ENV = jinja2.Environment(loader=jinja2.FileSystemLoader(TEMPLATE_DIR),
@@ -112,12 +114,14 @@ class IDHandler(webapp2.RequestHandler):
                 s_votes = vote_count
                 prev_2 = song_id
 
-        key = Key(Songs, best_id)
         msg = "Best ids:\n1. {} - {}\n2. {} - {}\n3. {} - {}"
         logging.debug(msg.format(best_id, max_votes,
                                  prev, p_votes,
                                  prev_2, s_votes))
-        self.response.write(key.urlsafe())
+
+        if max_votes > MIN_MATCH_THRESHOLD:
+            key = Key(Songs, best_id)
+            self.response.write(key.urlsafe())
 
 
 class SongHandler(webapp2.RequestHandler):
