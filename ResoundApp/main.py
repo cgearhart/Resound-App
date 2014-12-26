@@ -103,9 +103,14 @@ class IDHandler(webapp2.RequestHandler):
         s_votes, prev_2 = 0, None
         for (song_id, _), vote_count in votes.iteritems():
             if max_votes < vote_count:
-                s_votes, prev_2 = p_votes, prev
-                p_votes, prev = max_votes, best_id
-                max_votes, best_id = vote_count, song_id
+                max_votes, p_votes, s_votes = vote_count, max_votes, p_votes
+                best_id, prev, prev_2 = song_id, best_id, prev
+            elif p_votes < vote_count:
+                p_votes, s_votes = vote_count, p_votes
+                prev, prev_2 = song_id, prev
+            elif s_votes < vote_count:
+                s_votes = vote_count
+                prev_2 = song_id
 
         key = Key(Songs, best_id)
         msg = "Best ids:\n1. {} - {}\n2. {} - {}\n3. {} - {}"
