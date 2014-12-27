@@ -10,55 +10,133 @@ h1 {
   margin: 0;
 }
 
-#content {
+.content {
   width: 400px;
   margin-right: auto;
   margin-left: auto;
   text-align: center;
 }
 
-.message {
-  padding-bottom: 2em;
-}
-
 .center {
   width: 240px;
+  height: 400px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
 .round-btn {
+  display: table-cell;
   background: #0EC518;
   border: 5px solid #fff;
   border-radius: 100%;
   cursor: pointer;
   width: 240px;
   height: 240px;
-  display: table-cell;
   vertical-align: middle;
   text-align: center;
-  color: #002C00;
-  text-shadow:1px 2px 0 rgba(255, 255, 255, .6);
-  box-shadow: 0 -2px 0 3px #0B9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
-}
-
-.rect-btn {
-  background: #0EC518;
-  border: 5px solid #fff;
-  border-radius: 30px;
-  cursor: pointer;
-  width: 240px;
-  height: 80px;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  color: #002C00;
+  color: #0C0C0C;
   text-shadow:1px 2px 0 rgba(255, 255, 255, .6);
   box-shadow: 0 -2px 0 3px #0B9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17), 0 15px rgba(255, 255, 255, 0.25) inset;
 }
 
 .disabled {
   background: #333333;
-  box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset; }
+  box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17), 0 15px rgba(255, 255, 255, 0.32) inset;
+}
+
+.darkBox {
+  position:relative;
+  bottom: 180px;
+  left: -10px;
+  height: 120px;
+  width: 260px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  z-index: 99999;
+  pointer-events: none;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+}
+
+.boxMessage {
+  padding-top: 10%;
+  padding-bottom: 5%;
+  font-size: 2.5em;
+  color: white;
+}
+
+.bodyMessage {
+  position:relative;
+  right:80px;
+  bottom:100px;
+  width:400px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.fadein {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear; 
+}
+
+.spinner {
+  margin: 0 auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 40% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
 }
