@@ -121,7 +121,10 @@ class IDHandler(webapp2.RequestHandler):
 
         if max_votes > MIN_MATCH_THRESHOLD:
             key = Key(Songs, best_id)
-            self.response.write(key.urlsafe())
+            song = key.get()
+            self.response.write(json.dumps({'artist': song.artist,
+                                            'title': song.title,
+                                            'year': song.year}))
 
 
 class SongHandler(webapp2.RequestHandler):
